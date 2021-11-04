@@ -7,8 +7,15 @@ import http from 'http';
 //(request, response)
 const server = http.createServer((req, res)=>{
     console.log(">Se ha recibido una peticion");
+   //Registrar informacion de la peticion 
+   console.log(' Informacion de la peticion ');
+   console.log(' url: ${req.url} '); 
+   console.log(' Request Method: ${req.method}');
+   console.log(' Plataforma del cliente: ${req.headers[sec-ch-ua-platform]} ');
+    // Logeando el objeto req: peticion
+    //console.log(req);
     //Respondemos
-    req.rawListeners('Hola');
+    res.write("Esta es la respuesta del servidor.");
     // Terminar la conexion
     res.end();
 });
