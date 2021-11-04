@@ -14,6 +14,12 @@ const server = http.createServer((req, res)=>{
    console.log(' Plataforma del cliente: ${req.headers[sec-ch-ua-platform]} ');
     // Logeando el objeto req: peticion
     //console.log(req);
+    //Establecer el tipo de contenido que se entregara al cliente
+    res.setHeader('Cpntent-Type', 'text/html');
+    res.write("<html>");
+    res.write("<head><title> My App </title></head>");
+    res.write("<body><h1> Hello from the server </h1></body>");
+    res.write("</html<P>");
     //Respondemos
     res.write("Esta es la respuesta del servidor.");
     // Terminar la conexion
