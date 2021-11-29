@@ -43,7 +43,7 @@ const server = http.createServer((req, res)=>{
         );
         // Terminar la conexion
         res.end();
-        
+
     }else if(url === 'message' && method === "POST"){
         // 1.- Se crea una variable para guardar los datos de entrada
         let body = [];
@@ -60,17 +60,13 @@ const server = http.createServer((req, res)=>{
         req.on('end',()=>{
             const parasedBody =Buffer.concat(body).toString();
             const message = parasedBody.split('=')[1];
-            res.write(`
-            <html>
-                <head>
-                    <title>Received Message</title>
-                </head>
-                <body>
-                    <h1> Received Message</h1>
-                    <p> Thank you!!!</p>
-                    <p> The message we recieved was this: ${message}</p>
-                </body>);
-            </html>`);
+            //Guardando el mensaje en un archivo
+            fs.writeFileSync('message.txt',message);
+            // Establecer el status code de redireccionamiento
+            res.statusCode = 302; 
+            //Establecer la ruta de dirrecciones
+            res.setHeader('Location', '/');
+            
             //Finalizo conexion
             return res.end();
         });
