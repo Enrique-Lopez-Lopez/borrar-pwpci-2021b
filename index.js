@@ -56,11 +56,28 @@ const server = http.createServer((req, res)=>{
            // 2.3 Proteccion en caso de recepcion masiva de datos
            if (body.length > 1e6) req.socket.destroy();
         });
-        //Registrando un manejador de fin de recepcion de datos
+
+        //EjecutaOperacion(ARGS1,ARGS2,ARGS3, cb)
+        // Modelo Asincromo
+        //Suma1Numeros(1,2(res)=>{console.log(res)})
+        /*
+        1. let res = Suma2Numeros(1,2);
+        2. console.log(res)//undefined
+        */
+
+        // 3.- Registrando un manejador de fin de recepcion de datos
         req.on('end',()=>{
             const parasedBody =Buffer.concat(body).toString();
             const message = parasedBody.split('=')[1];
             //Guardando el mensaje en un archivo
+            fs.writeFile('message.txt', message, (err)=>{
+                console.log("> No se pudo grabar el archivo");
+                res.statusCode = 500;
+                res.setHeader("Content-Type","text/html");
+                res.write("ERROR WHEN LOADING FILE");
+                return res.end();
+                
+            });
             fs.writeFileSync('message.txt',message);
             // Establecer el status code de redireccionamiento
             res.statusCode = 302; 
