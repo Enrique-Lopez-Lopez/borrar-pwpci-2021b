@@ -4,6 +4,8 @@
   "description": "Proyecto de pwpc1",
   "main": "index.js",
   "scripts": {
+    "start": "echo \"Iniciando programa...\" && node index",
+    "dev": "set enviroment =DEVELOPMENT && node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/Enrique-Lopez-Lopez/borrar-pwpci-2021b/issues"
   },
-  "homepage": "https://github.com/Enrique-Lopez-Lopez/borrar-pwpci-2021b#readme"
+  "homepage": "https://github.com/Enrique-Lopez-Lopez/borrar-pwpci-2021b#readme",
+  "type": "module"
 }
