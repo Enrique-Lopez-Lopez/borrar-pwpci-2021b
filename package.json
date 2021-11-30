@@ -25,5 +25,8 @@
   "type": "module",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "expess": "0.0.1-security"
   }
 }

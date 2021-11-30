@@ -1,17 +1,21 @@
 //Importar el modulo http
 import http from 'http';
-import {requestHandler} from ".\routes.js";
+import {requestHandler} from "./routes.js"
+//3.- Importando express
+import Express from 'express'
+
+// Crea una instancia de Express
+const app = Express();  // (req, res, next)=>{} event handler
+
 /**
  * Codigos de Emojies
  * ref: https://www.w3schools.com/Chassets/ref_emoji.asp
  */
 
-// 2.- crear un servidor 
-// cb (callbak) es una *funcion que se ejecutara
-//ante cualquier peticion de un resurso a nuestro server 
-//(request, response)
+// 2.- crear un servidor tomando como 
+//  manejadpr de peticiones a express
 
-const server = http.createServer(routes.requestHandler);
+const server = http.createServer(app);
     
 
 // 3.-Pongo a trabajar el servidor
